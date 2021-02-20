@@ -6,9 +6,11 @@
       <label>full name</label><br>
       <input type="text" placeholder="Tony Stark" v-model="fullname"><br>
       <label>password</label><br>
-      <input type="password" v-model="password"><br>
+      <input :type="inputPasswordType" v-model="password">
+      <button type="button" @click="showPassword = !showPassword"><v-icon :name="showPassword ? 'eye' : 'eye-slash'" /></button><br>
       <label>password again</label><br>
-      <input type="password" v-model="password"><br>
+      <input :type="inputPasswordCheckType" v-model="passwordCheck">
+      <button type="button" @click="showPasswordCheck = !showPasswordCheck"><v-icon :name="showPasswordCheck ? 'eye' : 'eye-slash'" /></button><br>
       <button type="submit">register</button><br>
     </form>
     <div>
@@ -24,13 +26,33 @@ export default {
     return {
       email: '',
       password: '',
+      passwordCheck: '',
       fullname: '',
+      showPassword: false,
+      showPasswordCheck: false,
     }
   },
   name: "RegistrationForm",
   methods: {
-    hendleSubmit: function() {
-      console.log('data to registration:', `EMAIL - ${this.email} PASSWORD - ${this.password}`)
+    validateForm() {
+      return true
+    },
+    hendleSubmit() {
+      const user = {
+        email: this.email,
+        fullname: this.fullname,
+        password: this.password
+      };
+
+      if (this.validateForm()) this.$store.dispatch('user/addUser', user)
+    },
+  },
+  computed: {
+    inputPasswordType() {
+      return this.showPassword ? 'text' : 'password';
+    },
+    inputPasswordCheckType() {
+      return this.showPasswordCheck ? 'text' : 'password';
     }
   }
 }
