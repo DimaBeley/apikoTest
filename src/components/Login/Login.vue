@@ -4,7 +4,9 @@
       <label>Email</label><br>
       <input type="email" placeholder="email" v-model="email"><br>
       <label>Password</label><br>
-      <input type="password" placeholder="password" v-model="password"><br>
+      <input :type="inputPasswordType" placeholder="password" v-model="password">
+      <button type="button" @click="showPassword = !showPassword"><v-icon :name="showPassword ? 'eye' : 'eye-slash'" /></button><br>
+      <br>
       <button type="submit">Continue</button>
     </form>
     <div>
@@ -20,13 +22,23 @@
     data: function () {
       return {
         email: '',
-        password: ''
+        password: '',
+        showPassword: false,
       }
     },
     methods: {
       hendleSubmit: function() {
-        console.log('data to sign in:', `EMAIL - ${this.email} PASSWORD - ${this.password}`)
+        const user = {
+          email: this.email,
+          password: this.password,
+        }
+        this.$store.dispatch('user/login', )
       }
+    },
+    computed: {
+      inputPasswordType() {
+        return this.showPassword ? 'text' : 'password';
+      },
     }
   }
 </script>

@@ -7,7 +7,7 @@ const types = {
 export default {
     namespaced: true,
     state: () => ({
-      user: {},
+      user: null,
     }),
     actions: {
         addUser: (ctx, user) => {
@@ -16,14 +16,18 @@ export default {
             ctx.commit(types.LOGIN_USER, user)
         },
         login: (ctx, user) => {
-          ctx.commit(types.LOGIN_USER, user)
+            //TODO check user in db ? login() : forgot the password?;
+            const userFromDB = localStorage.getItem('user')
+
+            ctx.commit(types.LOGIN_USER, userFromDB)
         },
         logOutUser: (ctx) => {
             ctx.commit(types.LOG_OUT_USER)
         },
         getUserFromLocalStorage: (ctx) => {
            const user = localStorage.getItem('user')
-            if (user) ctx.commit(types.LOGIN_USER);
+            console.log('getUserFromLocalStorage', user)
+            if (user) ctx.commit(types.LOGIN_USER, JSON.parse(user));
         },
     },
     mutations: {
@@ -33,13 +37,12 @@ export default {
             //TODO add user to db
         },
         [types.LOG_OUT_USER](state) {
-            localStorage.removeItem('user');
             state.user = null;
+            localStorage.removeItem('user');
         },
         [types.LOGIN_USER](state, payload) {
             const { fullname, email } = payload
             state.user = { fullname, email }
-            console.log(payload, 'LOGIN???')
             localStorage.setItem('user',  JSON.stringify({ fullname, email }))
         }
     },
