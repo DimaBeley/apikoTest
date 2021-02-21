@@ -17,9 +17,7 @@ export default {
         },
         login: (ctx, user) => {
             //TODO check user in db ? login() : forgot the password?;
-            const userFromDB = localStorage.getItem('user')
-
-            ctx.commit(types.LOGIN_USER, userFromDB)
+            ctx.commit(types.LOGIN_USER, user)
         },
         logOutUser: (ctx) => {
             ctx.commit(types.LOG_OUT_USER)

@@ -1,0 +1,10 @@
+{
+    "apiKey": "AIzaSyAaKjVv6ZyicuWgYEzJ7VtZ157oEgaQtqo",
+    "authDomain": "apikotest.firebaseapp.com",
+    "databaseURL": "https://apikotest-default-rtdb.europe-west1.firebasedatabase.app",
+    "projectId": "apikotest",
+    "storageBucket": "apikotest.appspot.com",
+    "messagingSenderId": "98561586002",
+    "appId": "1:98561586002:web:d73818380df7095080008b",
+    "measurementId": "G-VF5TTJLKFX"
+}

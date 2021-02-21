@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="hendleSubmit">
+    <form @submit.prevent="handleSubmit">
       <label>Email</label><br>
       <input type="email" placeholder="email" v-model="email"><br>
       <label>Password</label><br>
@@ -17,28 +17,32 @@
 </template>
 
 <script>
-  export default {
-    name: "Login",
-    data: function () {
-      return {
-        email: '',
-        password: '',
-        showPassword: false,
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+  import db from '../../firebase/db'
+  console.log(db, 'db')
+
+  const users = db.collection('users')
+
+  @Component({})
+  export default class Login extends Vue {
+    email = ''
+    password = ''
+    showPassword = false
+
+    mounted() {
+      console.log(users, '<<< db users')
+    }
+
+    handleSubmit = () => {
+      const user = {
+        email: this.email,
+        password: this.password,
       }
-    },
-    methods: {
-      hendleSubmit: function() {
-        const user = {
-          email: this.email,
-          password: this.password,
-        }
-        this.$store.dispatch('user/login', )
-      }
-    },
-    computed: {
-      inputPasswordType() {
-        return this.showPassword ? 'text' : 'password';
-      },
+      this.$store.dispatch('user/login', user )
+    }
+    get inputPasswordType() {
+      return this.showPassword ? 'text' : 'password';
     }
   }
 </script>

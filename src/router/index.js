@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../components/Home.vue'
 import Registration from '../components/Login/Registration'
+import Login from '../components/Login/Login'
 
 Vue.use(VueRouter)
 
@@ -22,7 +23,7 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../components/Login/Login')
+    component: Login
   },
 ]
 
