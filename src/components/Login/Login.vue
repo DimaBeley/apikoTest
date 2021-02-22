@@ -19,19 +19,29 @@
 <script>
   import Vue from 'vue'
   import Component from 'vue-class-component'
-  import db from '../../firebase/db'
-  console.log(db, 'db')
+  import { db } from '../../firebase/db'
 
-  const users = db.collection('users')
+
 
   @Component({})
   export default class Login extends Vue {
     email = ''
     password = ''
     showPassword = false
+    users = []
+
+    beforeMount() {
+      db.collection('users')
+          .get()
+          .then(query => query.docs.map(doc => {
+            console.log(doc.data(), 'user!!!!!')
+            this.users.push(doc.data())
+          }))
+    }
 
     mounted() {
-      console.log(users, '<<< db users')
+      this.users.map(user => console.log(user, 'user?!'))
+      console.log(this.users[0], 'user 0');
     }
 
     handleSubmit = () => {
