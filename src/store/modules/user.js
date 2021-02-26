@@ -1,3 +1,5 @@
+import { db } from '../../firebase/db'
+
 const types = {
     ADD_USER: 'ADD_USER',
     LOGIN_USER: 'LOGIN_USER',
@@ -11,13 +13,37 @@ export default {
     }),
     actions: {
         addUser: (ctx, user) => {
+            // TODO check
+            // db.collection('users')
+            //     .doc(user.email)
+            //     .get()
+            //     .then(query => {
+            //         console.log(query.doc.data(), 'query.doc.data()')
+            //         return !!query.doc.data()
+            //     })
+
+            db.collection('users')
+                .doc(user.email)
+                .set(user)
+                .then(() => {
+                    console.log('user updated!', user)
+                })
             //TODO check user in db ? user exist : addUser();
             ctx.commit(types.ADD_USER, user)
             ctx.commit(types.LOGIN_USER, user)
         },
-        login: (ctx, user) => {
+        login: (ctx, userData) => {
+            console.log(userData, 'userData>>>>>>>>>>>>');
+            db.collection('users')
+                .doc(userData.email)
+                .get()
+                .then(doc => {
+                    const data = doc.data()
+                    console.log(data, 'query.data()???')
+                    data && data.password === userData.password ? ctx.commit(types.LOGIN_USER, data) : console.log('User not exist / password incorrect')
+                })
             //TODO check user in db ? login() : forgot the password?;
-            ctx.commit(types.LOGIN_USER, user)
+
         },
         logOutUser: (ctx) => {
             ctx.commit(types.LOG_OUT_USER)
@@ -31,7 +57,6 @@ export default {
     mutations: {
         [types.ADD_USER](state, payload) {
             console.log(payload, 'USer : ADD USER?  ))))))))))');
-            // localStorage.setItem('user',  JSON.stringify(payload))
             //TODO add user to db
         },
         [types.LOG_OUT_USER](state) {
@@ -40,7 +65,7 @@ export default {
         },
         [types.LOGIN_USER](state, payload) {
             const { fullname, email } = payload
-            state.user = { fullname, email }
+            state.user = payload
             localStorage.setItem('user',  JSON.stringify({ fullname, email }))
         }
     },

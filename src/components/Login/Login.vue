@@ -18,7 +18,7 @@
 
 <script>
   import { Vue, Component, Watch } from 'vue-property-decorator'
-  import { db } from '../../firebase/db'
+  // import { db } from '../../firebase/db'
 
 
 
@@ -36,14 +36,14 @@
     //   console.log(oldVal, 'Old val');
     // }
 
-    handleSubmit = () => {
+    handleSubmit() {
       console.log(this.user, 'user??');
       this.$store.dispatch('user/login', this.user )
     }
     get inputPasswordType() {
       return this.showPassword ? 'text' : 'password';
     }
-    get user() {
+    get user(){
       return {
         email: this.email,
         password: this.password,
