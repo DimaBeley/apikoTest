@@ -17,8 +17,7 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import Component from 'vue-class-component'
+  import { Vue, Component, Watch } from 'vue-property-decorator'
   import { db } from '../../firebase/db'
 
 
@@ -30,29 +29,25 @@
     showPassword = false
     users = []
 
-    beforeMount() {
-      db.collection('users')
-          .get()
-          .then(query => query.docs.map(doc => {
-            console.log(doc.data(), 'user!!!!!')
-            this.users.push(doc.data())
-          }))
-    }
 
-    mounted() {
-      this.users.map(user => console.log(user, 'user?!'))
-      console.log(this.users[0], 'user 0');
-    }
+    @Watch ('users')
+    // usersWatch(val, oldVal) {
+    //   console.log(val, 'val');
+    //   console.log(oldVal, 'Old val');
+    // }
 
     handleSubmit = () => {
-      const user = {
-        email: this.email,
-        password: this.password,
-      }
-      this.$store.dispatch('user/login', user )
+      console.log(this.user, 'user??');
+      this.$store.dispatch('user/login', this.user )
     }
     get inputPasswordType() {
       return this.showPassword ? 'text' : 'password';
+    }
+    get user() {
+      return {
+        email: this.email,
+        password: this.password,
+      }
     }
   }
 </script>

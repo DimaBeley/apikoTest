@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="hendleSubmit">
+    <form @submit.prevent="handleSubmit">
       <label>Registration</label><br>
       <input type="email" placeholder="Example@gmail.com" v-model="email"><br>
       <label>full name</label><br>
@@ -21,39 +21,36 @@
 </template>
 
 <script>
-export default {
-  data: () => {
-    return {
-      email: '',
-      password: '',
-      passwordCheck: '',
-      fullname: '',
-      showPassword: false,
-      showPasswordCheck: false,
-    }
-  },
-  name: "RegistrationForm",
-  methods: {
-    validateForm() {
-      return true
-    },
-    hendleSubmit() {
-      const user = {
-        email: this.email,
-        fullname: this.fullname,
-        password: this.password
-      };
+import { Vue, Component } from 'vue-property-decorator'
+import { db } from '../../firebase/db'
 
-      if (this.validateForm()) this.$store.dispatch('user/addUser', user)
-    },
-  },
-  computed: {
-    inputPasswordType() {
-      return this.showPassword ? 'text' : 'password';
-    },
-    inputPasswordCheckType() {
-      return this.showPasswordCheck ? 'text' : 'password';
+@Component({})
+export default class Registration extends Vue {
+  email = ''
+  password = ''
+  passwordCheck = ''
+  fullname = ''
+  showPassword = false
+  showPasswordCheck = false
+
+  validateForm() {
+    return true
+  }
+  handleSubmit() {
+    const user = {
+      email: this.email,
+      fullname: this.fullname,
+      password: this.password,
+      date: Date.now()
     }
+
+    if (this.validateForm()) this.$store.dispatch('user/addUser', user)
+  }
+  get inputPasswordType() {
+    return this.showPassword ? 'text' : 'password';
+  }
+  get inputPasswordCheckType() {
+    return this.showPasswordCheck ? 'text' : 'password';
   }
 }
 </script>
