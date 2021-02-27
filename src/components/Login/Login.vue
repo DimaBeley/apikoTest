@@ -17,8 +17,7 @@
 </template>
 
 <script>
-  import { Vue, Component, Watch } from 'vue-property-decorator'
-  // import { db } from '../../firebase/db'
+  import { Vue, Component } from 'vue-property-decorator'
 
 
 
@@ -29,16 +28,10 @@
     showPassword = false
     users = []
 
-
-    @Watch ('users')
-    // usersWatch(val, oldVal) {
-    //   console.log(val, 'val');
-    //   console.log(oldVal, 'Old val');
-    // }
-
     handleSubmit() {
       console.log(this.user, 'user??');
       this.$store.dispatch('user/login', this.user )
+      this.$router.push('/')
     }
     get inputPasswordType() {
       return this.showPassword ? 'text' : 'password';

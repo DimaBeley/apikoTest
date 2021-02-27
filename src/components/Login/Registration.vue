@@ -44,7 +44,10 @@
         date: Date.now()
       }
 
-      if (this.validateForm()) this.$store.dispatch('user/addUser', user)
+      if (this.validateForm()) {
+        this.$store.dispatch('user/addUser', user)
+        this.$router.push('/')
+      }
     }
     get inputPasswordType() {
       return this.showPassword ? 'text' : 'password';

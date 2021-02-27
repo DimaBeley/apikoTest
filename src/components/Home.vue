@@ -1,6 +1,7 @@
 <template>
   <div class="main">
     <header>
+      <h1 v-if="user">Hello {{user.fullname}}, Welcome</h1>
       <div class="logo">Apiko logo</div>
       <router-link class="header-link" to="/sell">sell </router-link>
       <router-link v-if="!user" class="header-link" to="/login">login</router-link>
@@ -11,18 +12,17 @@
 </template>
 
 <script>
-// @ is an alias to /src
-export default {
-  name: 'Home',
-  computed: {
-    user() {
+  import { Vue, Component } from 'vue-property-decorator'
+
+  @Component({})
+  export default class Home extends Vue {
+    get user() {
       return this.$store.getters["user/user"]
     }
-  },
-  beforeMount() {
-    this.$store.dispatch('user/getUserFromLocalStorage');
-  },
-}
+    beforeMount() {
+      this.$store.dispatch('user/getUserFromLocalStorage');
+    }
+  }
 </script>
 
 <style lang="scss">
