@@ -22,8 +22,7 @@
 
 <script>
   import { Vue, Component } from 'vue-property-decorator'
-  // import { db } from '../../firebase/db'
-
+  // TODO email validate, password validation
   @Component({})
   export default class Registration extends Vue {
     email = ''

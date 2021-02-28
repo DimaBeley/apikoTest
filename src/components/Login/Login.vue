@@ -18,15 +18,13 @@
 
 <script>
   import { Vue, Component } from 'vue-property-decorator'
-
-
+  // TODO email validate, password validation
 
   @Component({})
   export default class Login extends Vue {
     email = ''
     password = ''
     showPassword = false
-    users = []
 
     handleSubmit() {
       console.log(this.user, 'user??');
