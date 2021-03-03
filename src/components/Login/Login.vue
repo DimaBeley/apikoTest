@@ -34,7 +34,7 @@
     get inputPasswordType() {
       return this.showPassword ? 'text' : 'password';
     }
-    get user(){
+    get user() {
       return {
         email: this.email,
         password: this.password,
