@@ -44,7 +44,7 @@
       .home_header_logo {
         justify-content: start;
         position: relative;
-        background-image: url("../../src/assets/logo.png");
+        background-image: url("../../src/assets/logoBlack.png");
         width: 102px;
         background-size: cover;
         background-repeat: no-repeat;
