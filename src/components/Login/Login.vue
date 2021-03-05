@@ -108,9 +108,10 @@
         color: #303030;
       }
       p {
-        margin: 25px 0;
+        margin: 25px 0 28px 0;
         text-align: center;
         font-size: 22px;
+        color: #282828;
       }
 
       .show-password-btn {
@@ -132,9 +133,10 @@
           outline: none;
         }
       }
+
       .login_form__input {
         margin-top: 4px;
-        margin-bottom: 15px;
+        margin-bottom: 11px;
         width: 377px;
         height: 58px;
         background: #F9FAFB;
@@ -144,6 +146,12 @@
         padding-left: 14px;
         font-size: 16px;
         letter-spacing: 0.4px;
+        &::placeholder {
+          font-size: 16px;
+          line-height: 18px;
+          letter-spacing: 0.4px;
+          color: rgba(102, 102, 102, 0.466455);
+        }
       }
       .login_form__submit-btn {
         height: 58px;
