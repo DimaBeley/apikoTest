@@ -1,8 +1,7 @@
 <template>
   <div class="home">
     <header class="home_header">
-      <div class="home_header_logo">
-      </div>
+      <div class="home_header_logo"></div>
       <div class="header-links">
         <router-link class="header-links_items header-links_sell" to="/sell">sell </router-link>
         <router-link v-if="!user" class="header-links_items header-links_login" to="/login">login</router-link>
