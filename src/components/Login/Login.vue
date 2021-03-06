@@ -5,13 +5,15 @@
         <div class="login_form">
           <p>Login</p>
           <label>Email</label><br>
-          <input type="email" placeholder="Example@gmail.com" autofocus v-model="email" class="login_form__input"><br>
+          <input type="email" placeholder="Example@gmail.com" autofocus v-model="email" class="login_form__input email"><br>
           <label>Password</label><br>
-          <input :type="inputPasswordType" v-model="password" class="login_form__input ">
+          <input :type="inputPasswordType" v-model="password" class="login_form__input password">
           <button class="show-password-btn" type="button" @click="showPassword = !showPassword">
             <v-icon :scale="1.4" :name="showPassword ? 'eye' : 'eye-slash'" />
           </button>
-          <span class="login_form__forget-password">Don't remember password?</span>
+          <div class="login_form__forget-password">
+            <a :href="'#'" class="login_form__forget-password__link">Don't remember password?</a>
+          </div>
           <button type="submit" class="login_form__submit-btn">Continue</button>
         </div>
       </form>
@@ -93,12 +95,17 @@
 
     .login_form {
       .login_form__forget-password {
-        font-size: 14px;
-        line-height: 16px;
-        letter-spacing: 0.4px;
-        color: #8C8C8C;
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
+        position: relative;
+        bottom: 15px;
+        .login_form__forget-password__link {
+          font-size: 14px;
+          line-height: 16px;
+          letter-spacing: 0.4px;
+          color: #8C8C8C;
+          text-decoration: none;
+        }
       }
       label {
         font-size: 12px;
@@ -117,7 +124,7 @@
       .show-password-btn {
         display: flow-root;
         position: relative;
-        bottom: 54px;
+        bottom: 44px;
         left: 330px;
         background-color: transparent;
         border: none;
@@ -127,16 +134,20 @@
         &:hover {
           cursor: pointer;
         }
-
         &:focus {
-          //border: none;
           outline: none;
         }
       }
 
+      .email {
+        margin-bottom: 11px;
+      }
+      .password {
+        margin-bottom: 6px;
+      }
+
       .login_form__input {
         margin-top: 4px;
-        margin-bottom: 11px;
         width: 377px;
         height: 58px;
         background: #F9FAFB;
