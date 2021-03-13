@@ -2,19 +2,19 @@
   <div>
     <div class="login">
       <form @submit.prevent="handleSubmit">
-        <div class="login_form">
+        <div>
           <p>Login</p>
-          <label>Email</label><br>
-          <input type="email" placeholder="Example@gmail.com" autofocus v-model="email" class="login_form__input email"><br>
-          <label>Password</label><br>
-          <input :type="inputPasswordType" v-model="password" class="login_form__input password">
-          <button class="show-password-btn" type="button" @click="showPassword = !showPassword">
+          <label for="loginEmail">Email</label><br>
+          <input type="email" id="loginEmail" placeholder="Example@gmail.com" autofocus v-model="email" class="login__input login__email"><br>
+          <label for="loginPassword">Password</label><br>
+          <input :type="inputPasswordType" id="loginPassword" v-model="password" class="login__input login__password">
+          <button class="login__show-password-btn" type="button" @click="showPassword = !showPassword">
             <v-icon :scale="1.4" :name="showPassword ? 'eye' : 'eye-slash'" />
           </button>
-          <div class="login_form__forget-password">
-            <a :href="'#'" class="login_form__forget-password__link">Don't remember password?</a>
+          <div class="login__forget-password">
+            <a :href="'#'" class="login__forget-password__link">Don't remember password?</a>
           </div>
-          <button type="submit" class="login_form__submit-btn">Continue</button>
+          <button type="submit" class="login__submit-btn">Continue</button>
         </div>
       </form>
     </div>
@@ -93,92 +93,87 @@
     width: 425px;
     height: 365px;
 
-    .login_form {
-      .login_form__forget-password {
-        display: flex;
-        justify-content: flex-end;
-        position: relative;
-        bottom: 15px;
-        .login_form__forget-password__link {
-          font-size: 14px;
-          line-height: 16px;
-          letter-spacing: 0.4px;
-          color: #8C8C8C;
-          text-decoration: none;
-        }
-      }
-      label {
-        font-size: 12px;
-        line-height: 14px;
-        letter-spacing: 0.3px;
-        text-transform: uppercase;
-        color: #303030;
-      }
-      p {
-        margin: 25px 0 28px 0;
-        text-align: center;
-        font-size: 22px;
-        color: #282828;
-      }
-
-      .show-password-btn {
-        display: flow-root;
-        position: relative;
-        bottom: 44px;
-        left: 330px;
-        background-color: transparent;
-        border: none;
-        width: 23px;
-        height: 14px;
-
-        &:hover {
-          cursor: pointer;
-        }
-        &:focus {
-          outline: none;
-        }
-      }
-
-      .email {
-        margin-bottom: 11px;
-      }
-      .password {
-        margin-bottom: 6px;
-      }
-
-      .login_form__input {
-        margin-top: 4px;
-        width: 377px;
-        height: 58px;
-        background: #F9FAFB;
-        border: 1px solid #DEDEE0;
-        box-sizing: border-box;
-        border-radius: 5px;
-        padding-left: 14px;
-        font-size: 16px;
+    .login__forget-password {
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+      bottom: 15px;
+      .login__forget-password__link {
+        font-size: 14px;
+        line-height: 16px;
         letter-spacing: 0.4px;
-        &::placeholder {
-          font-size: 16px;
-          line-height: 18px;
-          letter-spacing: 0.4px;
-          color: rgba(102, 102, 102, 0.466455);
-        }
+        color: #8C8C8C;
+        text-decoration: none;
       }
-      .login_form__submit-btn {
-        height: 58px;
-        width: 377px;
-        background-color: $main-theme-green;
-        border: none;
-        border-radius: 5px;
+    }
+    label {
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      color: #303030;
+    }
+    p {
+      margin: 25px 0 28px 0;
+      text-align: center;
+      font-size: 22px;
+      color: #282828;
+    }
+    .login__show-password-btn {
+      display: flow-root;
+      position: relative;
+      bottom: 44px;
+      left: 330px;
+      background-color: transparent;
+      border: none;
+      width: 23px;
+      height: 14px;
+      &:hover {
+        cursor: pointer;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .login__email {
+      margin-bottom: 11px;
+    }
+    .login__password {
+      margin-bottom: 6px;
+    }
+
+    .login__input {
+      margin-top: 4px;
+      width: 377px;
+      height: 58px;
+      background: #F9FAFB;
+      border: 1px solid #DEDEE0;
+      box-sizing: border-box;
+      border-radius: 5px;
+      padding-left: 14px;
+      font-size: 16px;
+      letter-spacing: 0.4px;
+      &::placeholder {
         font-size: 16px;
         line-height: 18px;
-        text-align: center;
         letter-spacing: 0.4px;
-
-        color: #FFFFFF;
-        &:hover {
-          cursor: pointer;
-        }
+        color: rgba(102, 102, 102, 0.466455);
+      }
+    }
+    .login__submit-btn {
+      height: 58px;
+      width: 377px;
+      background-color: $main-theme-green;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      line-height: 18px;
+      text-align: center;
+      letter-spacing: 0.4px;
+      color: #FFFFFF;
+      &:hover {
+        cursor: pointer;
       }
     }
   }
