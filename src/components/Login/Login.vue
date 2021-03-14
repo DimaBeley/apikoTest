@@ -97,7 +97,7 @@
       display: flex;
       justify-content: flex-end;
       position: relative;
-      bottom: 15px;
+      bottom: 14px;
       .login__forget-password__link {
         font-size: 14px;
         line-height: 16px;
@@ -122,12 +122,12 @@
     .login__show-password-btn {
       display: flow-root;
       position: relative;
-      bottom: 44px;
+      bottom: 55px;
       left: 330px;
       background-color: transparent;
       border: none;
-      width: 23px;
-      height: 14px;
+      width: 0;
+      height: 0;
       &:hover {
         cursor: pointer;
       }
@@ -140,7 +140,7 @@
       margin-bottom: 11px;
     }
     .login__password {
-      margin-bottom: 6px;
+      margin-bottom: 17px;
     }
 
     .login__input {
