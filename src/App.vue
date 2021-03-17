@@ -5,6 +5,10 @@
 </template>
 <style lang="scss">
   @import 'assets/styles/scss/vars.scss';
+  @font-face {
+    font-family: 'Helvetica';
+    src: url('../src/assets/fonts/HelveticaRegular.woff');
+  }
   body {
     margin: 0;
     background-color: $main-bg-color;

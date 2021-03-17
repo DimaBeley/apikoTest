@@ -18,7 +18,7 @@
           <button class="registration__show-password-btn" type="button" @click="showPasswordCheck = !showPasswordCheck">
             <v-icon :scale="1.4" :name="showPasswordCheck ? 'eye' : 'eye-slash'" />
           </button><br>
-          <button type="submit" class="registration__submit-btn">register</button><br>
+          <button type="submit" class="registration__submit-btn">Register</button><br>
         </div>
       </form>
     </div>
@@ -76,7 +76,7 @@
     background: #FFFFFF;
     box-shadow: 0 2px 42px rgba(0, 0, 0, 0.111233);
     border-radius: 7px;
-    margin: 21px auto 0 auto;
+    margin: 23px auto 0 auto;
     display: flex;
     justify-content: center;
 
@@ -85,8 +85,8 @@
       text-align: center;
       letter-spacing: 0.4px;
       color: #2A2A2A;
-      line-height: 76px;
-
+      line-height: 78px;
+      margin-left: 10px;
       a {
         text-transform: uppercase;
         color: $main-theme-green;
@@ -110,17 +110,22 @@
     //TODO mixin for label and <p> and inputs? and another...
     label {
       font-size: 12px;
-      line-height: 14px;
       letter-spacing: 0.3px;
       text-transform: uppercase;
       color: #303030;
     }
+
+    [for$='Password'], [for$='PasswordCheck'] {
+      letter-spacing: 0.6px;
+    }
+
     p {
       margin: 25px 0 28px 0;
       text-align: center;
       font-size: 22px;
       color: #282828;
     }
+
     .registration__show-password-btn {
       display: block;
       position: relative;
@@ -142,31 +147,29 @@
       margin-bottom: 7px;
     }
     .registration__input {
-      margin: 4px 0 9px 0;
+      padding: 0 0 0 11px;
+      margin: 5px 0 9px 0;
       width: 377px;
       height: 58px;
       background: #F9FAFB;
       border: 1px solid #DEDEE0;
       box-sizing: border-box;
       border-radius: 5px;
-      padding-left: 14px;
       font-size: 1em;
       letter-spacing: 0.4px;
+      font-family: Helvetica;
+      font-weight: 200;
       &::placeholder {
+        font-family: Helvetica;
+        font-weight: 200;
         font-size: 1em;
-        line-height: 18px;
         letter-spacing: 0.4px;
+        margin-bottom: 1px;
         color: rgba(102, 102, 102, 0.466455);
       }
     }
-    //#registrationEmail, #registrationFullname {
-    //  margin-bottom: 9px;
-    //}
-    //#registrationPassword {
-    //  margin-bottom: -5px;
-    //}
     .registration__submit-btn {
-      //TODO find lost pixels >>>>
+      font-family: Helvetica;
       margin-top: 3px;
       //TODO remove margin >>>>>
       height: 58px;
@@ -175,7 +178,6 @@
       border: none;
       border-radius: 5px;
       font-size: 16px;
-      line-height: 18px;
       text-align: center;
       letter-spacing: 0.4px;
       color: #FFFFFF;
