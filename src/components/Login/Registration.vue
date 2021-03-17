@@ -4,20 +4,24 @@
       <form @submit.prevent="handleSubmit">
         <div>
           <p>Register</p>
-          <label for="registrationEmail">Email</label><br>
-          <input class="registration__input" type="email" id="registrationEmail" placeholder="Example@gmail.com" v-model="email"><br>
-          <label for="registrationFullname">full name</label><br>
-          <input class="registration__input" type="text" id="registrationFullname" placeholder="Tony Stark" v-model="fullname"><br>
-          <label for="registrationPassword">password</label><br>
+          <label for="registrationEmail">Email</label>
+          <input class="registration__input" type="email" id="registrationEmail" placeholder="Example@gmail.com" v-model="email">
+          <label for="registrationFullname">full name</label>
+          <input class="registration__input" type="text" id="registrationFullname" placeholder="Tony Stark" v-model="fullname">
+          <label for="registrationPassword">password</label>
           <input class="registration__input" :type="inputPasswordType" id="registrationPassword" v-model="password">
-          <button class="registration__show-password-btn" type="button" @click="showPassword = !showPassword">
-            <v-icon :scale="1.4" :name="showPassword ? 'eye' : 'eye-slash'" />
-          </button>
-          <label for="registrationPasswordCheck">password again</label><br>
+          <show-password-btn :showPassword="showPassword"
+                             @click="showPassword = !showPassword"
+                             :left="330"
+                             :bottom="37"
+          />
+          <label for="registrationPasswordCheck">password again</label>
           <input class="registration__input" :type="inputPasswordCheckType" id="registrationPasswordCheck" v-model="passwordCheck">
-          <button class="registration__show-password-btn" type="button" @click="showPasswordCheck = !showPasswordCheck">
-            <v-icon :scale="1.4" :name="showPasswordCheck ? 'eye' : 'eye-slash'" />
-          </button><br>
+          <show-password-btn :showPassword="showPasswordCheck"
+                             @click="showPasswordCheck = !showPasswordCheck"
+                             :left="330"
+                             :bottom="39"
+          />
           <button type="submit" class="registration__submit-btn">Register</button><br>
         </div>
       </form>
@@ -32,8 +36,11 @@
 
 <script>
   import { Vue, Component } from 'vue-property-decorator'
+  import ShowPasswordBtn from "./ShowPasswordBtn";
   // TODO email validate, password validation
-  @Component({})
+  @Component({
+    components: { ShowPasswordBtn }
+  })
   export default class Registration extends Vue {
     email = ''
     password = ''
@@ -113,6 +120,9 @@
       letter-spacing: 0.3px;
       text-transform: uppercase;
       color: #303030;
+      display: block;
+      margin-bottom: 5px;
+      margin-top: 13px;
     }
 
     [for$='Password'], [for$='PasswordCheck'] {
@@ -120,7 +130,8 @@
     }
 
     p {
-      margin: 25px 0 28px 0;
+      padding: 2px 0 11px 0;
+      //margin: 25px 0 28px 0;
       text-align: center;
       font-size: 22px;
       color: #282828;
@@ -144,11 +155,11 @@
     }
     #registrationPassword {
       //TODO remove margin >>>>>?????? where pixels ??  font-size??
-      margin-bottom: 7px;
+      //margin-bottom: 7px;
     }
     .registration__input {
       padding: 0 0 0 11px;
-      margin: 5px 0 9px 0;
+      //margin: 5px 0 9px 0;
       width: 377px;
       height: 58px;
       background: #F9FAFB;
@@ -156,7 +167,7 @@
       box-sizing: border-box;
       border-radius: 5px;
       font-size: 1em;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.6px;
       font-family: Helvetica;
       font-weight: 200;
       &::placeholder {
@@ -170,8 +181,8 @@
     }
     .registration__submit-btn {
       font-family: Helvetica;
-      margin-top: 3px;
-      //TODO remove margin >>>>>
+      margin-top: 29px;
+      //TODO remove margin ?? >>>>>
       height: 58px;
       width: 377px;
       background-color: $main-theme-green;

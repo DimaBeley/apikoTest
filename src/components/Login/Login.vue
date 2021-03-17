@@ -8,9 +8,11 @@
           <input type="email" id="loginEmail" placeholder="Example@gmail.com" autofocus v-model="email" class="login__input login__email"><br>
           <label for="loginPassword">Password</label><br>
           <input :type="inputPasswordType" id="loginPassword" v-model="password" class="login__input login__password">
-          <button class="login__show-password-btn" type="button" :style="showPassword ? 'left: 330px' : 'left: 329px'" @click="showPassword = !showPassword">
-            <v-icon :scale="showPassword ? 1.4 : 1.55" :name="showPassword ? 'eye' : 'eye-slash'"/>
-          </button>
+          <show-password-btn :showPassword="showPassword"
+                             @click="showPassword = !showPassword"
+                             :left="330"
+                             :bottom="57"
+          />
           <div class="login__forget-password">
             <a :href="'#'" class="login__forget-password__link">Don't remember password?</a>
           </div>
@@ -28,9 +30,12 @@
 
 <script>
   import { Vue, Component } from 'vue-property-decorator'
+  import ShowPasswordBtn from './ShowPasswordBtn'
   // TODO email validate, password validation
 
-  @Component({})
+  @Component({
+    components: { ShowPasswordBtn }
+  })
   export default class Login extends Vue {
     email = ''
     password = ''
@@ -117,22 +122,6 @@
       text-align: center;
       font-size: 22px;
       color: #282828;
-    }
-    .login__show-password-btn {
-      display: flow-root;
-      position: relative;
-      bottom: 57px;
-      //left: 330px;
-      background-color: transparent;
-      border: none;
-      width: 0;
-      height: 0;
-      &:hover {
-        cursor: pointer;
-      }
-      &:focus {
-        outline: none;
-      }
     }
 
     .login__email {
