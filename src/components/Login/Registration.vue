@@ -130,13 +130,12 @@
       margin-top: 13px;
     }
 
-    [for$='Password'], [for$='PasswordCheck'] {
+    [for$='registrationPassword'], [for$='registrationPasswordCheck'] {
       letter-spacing: 0.6px;
     }
 
     p {
-      padding: 2px 0 11px 0;
-      //margin: 25px 0 28px 0;
+      margin: 24px 0 33px 0;
       text-align: center;
       font-size: 22px;
       color: #282828;
@@ -158,13 +157,8 @@
         outline: none;
       }
     }
-    #registrationPassword {
-      //TODO remove margin >>>>>?????? where pixels ??  font-size??
-      //margin-bottom: 7px;
-    }
     .registration__input {
       padding: 0 0 0 11px;
-      //margin: 5px 0 9px 0;
       width: 377px;
       height: 58px;
       background: #F9FAFB;
@@ -187,14 +181,12 @@
     .registration__submit-btn {
       font-family: Helvetica;
       margin-top: 29px;
-      //TODO remove margin ?? >>>>>
       height: 58px;
       width: 377px;
       background-color: $main-theme-green;
       border: none;
       border-radius: 5px;
       font-size: 16px;
-      text-align: center;
       letter-spacing: 0.4px;
       color: #FFFFFF;
       &:hover {

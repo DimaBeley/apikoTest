@@ -28,7 +28,6 @@
   .home {
     .home_header {
       margin: 18px 159px 0 97px;
-      border: 1px solid red;
       display: flex;
       justify-content: space-between;
       .home_header_logo {

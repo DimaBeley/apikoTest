@@ -4,14 +4,14 @@
       <form @submit.prevent="handleSubmit">
         <div>
           <p>Login</p>
-          <label for="loginEmail">Email</label><br>
-          <input type="email" id="loginEmail" placeholder="Example@gmail.com" autofocus v-model="email" class="login__input login__email"><br>
-          <label for="loginPassword">Password</label><br>
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="Example@gmail.com" autofocus v-model="email" class="login__input login__email">
+          <label for="loginPassword">Password</label>
           <input :type="inputPasswordType" id="loginPassword" v-model="password" class="login__input login__password">
           <show-password-btn :showPassword="showPassword"
                              @click="showPassword = !showPassword"
                              :left="330"
-                             :bottom="57"
+                             :bottom="37"
           />
           <div class="login__forget-password">
             <a :href="'#'" class="login__forget-password__link">Don't remember password?</a>
@@ -109,6 +109,7 @@
       justify-content: flex-end;
       position: relative;
       bottom: 16px;
+      margin-top: 20px;
       .login__forget-password__link {
         font-size: 14px;
         letter-spacing: 0.25px;
@@ -117,31 +118,24 @@
       }
     }
     label {
+      display: block;
+      margin: 15px 0 4px 0;
       font-size: 12px;
       letter-spacing: 0.6px;
       text-transform: uppercase;
       color: #303030;
     }
     p {
-      margin: 25px 0 28px 9px;
+      margin: 25px 0 33px 9px;
       text-align: center;
       font-size: 22px;
       color: #282828;
     }
-
-    .login__email {
-      margin-bottom: 11px;
-    }
-    .login__password {
-      margin-bottom: 20px;
-    }
-
     .login__input {
+      padding: 0 0 0 12px;
       font-family: Helvetica;
       width: 377px;
       height: 58px;
-      margin-top: 4px;
-      padding-left: 12px;
       background: #F9FAFB;
       border: 1px solid #DEDEE0;
       box-sizing: border-box;
@@ -155,13 +149,13 @@
       }
     }
     .login__submit-btn {
+      font-family: Helvetica;
       height: 58px;
       width: 377px;
       background-color: $main-theme-green;
       border: none;
       border-radius: 5px;
       font-size: 16px;
-      text-align: center;
       letter-spacing: 0.4px;
       color: #FFFFFF;
       &:hover {

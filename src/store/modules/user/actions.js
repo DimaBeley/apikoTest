@@ -29,7 +29,6 @@ export default {
             .get()
             .then(doc => {
                 const data = doc.data()
-                console.log(data, 'query.data()???')
                 data && data.password === userData.password ? ctx.commit(types.LOGIN_USER, data) : console.log('User not exist / password incorrect')
             })
         //TODO check user in db ? login() : forgot the password?;
