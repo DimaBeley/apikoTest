@@ -41,9 +41,14 @@
     password = ''
     showPassword = false
 
+    beforeCreate () {
+      if (this.$store.getters["user/isLoggedIn"]) {
+        this.$router.push({ name: 'Home' })
+      }
+    }
     handleSubmit() {
       this.$store.dispatch('user/login', this.user )
-      this.$router.push('/')
+      this.$router.push('/home')
     }
     get inputPasswordType() {
       return this.showPassword ? 'text' : 'password';

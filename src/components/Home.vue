@@ -1,16 +1,7 @@
 <template>
   <div class="home">
-    <header class="home_header">
-      <div class="home_header_logo"></div>
-      <div class="header-links">
-        <router-link class="header-links_items header-links_sell" to="/sell">sell </router-link>
-        <router-link v-if="!user" class="header-links_items header-links_login" to="/login">login</router-link>
-        <a class="header-links_items header-links_logout" v-else @click.prevent="$store.dispatch('user/logOutUser')">logout</a>
-        <a class="header-links_items header-links_heart" @click.prevent="user ? $router.push('/likes') : null"></a>
-      </div>
-    </header><br>
-      <h1 class="" v-if="user">Hello {{userFullname}}, Welcome</h1>
-    <router-view/>
+      <h1>Home</h1>
+      <h2 class="" v-if="user">Hello {{userFullname}}, Welcome</h2>
   </div>
 </template>
 
@@ -43,7 +34,7 @@
       .home_header_logo {
         justify-content: start;
         position: relative;
-        background-image: url("../../src/assets/logoBlack.png");
+        background-image: url("../assets/logoLogin.png");
         width: 102px;
         background-size: cover;
         background-repeat: no-repeat;

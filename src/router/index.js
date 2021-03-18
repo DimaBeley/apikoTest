@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../components/Home.vue'
+import Main from '../components/Main.vue'
 import Registration from '../components/Login/Registration'
 import Login from '../components/Login/Login'
 
@@ -9,8 +10,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'Main',
+    component: Main,
     children: [
       {
         path: '/registration',
@@ -21,6 +22,11 @@ const routes = [
         path: '/login',
         name: 'Login',
         component: Login
+      },
+      {
+        path: '/home',
+        name: 'Home',
+        component: Home
       },
     ]
   },

@@ -62,7 +62,7 @@
 
       if (this.validateForm()) {
         this.$store.dispatch('user/addUser', user)
-        this.$router.push('/')
+        this.$router.push('/home')
       }
     }
     get inputPasswordType() {
@@ -70,6 +70,11 @@
     }
     get inputPasswordCheckType() {
       return this.showPasswordCheck ? 'text' : 'password';
+    }
+    beforeCreate () {
+      if (this.$store.getters["user/isLoggedIn"]) {
+        this.$router.push({ name: 'Home' })
+      }
     }
   }
 </script>
